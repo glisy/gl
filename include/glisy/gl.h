@@ -8,12 +8,14 @@
 
 #if __APPLE__
 #include "TargetConditionals.h"
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+#if GLISY_USE_GLES2
 #include <OpenGLES/ES2/gl.h>
 #include <OpenGLES/ES2/glext.h>
-#elif TARGET_IPHONE_SIMULATOR
-#include <OpenGLES/ES2/gl.h>
-#include <OpenGLES/ES2/glext.h>
+#else
+#include <OpenGLES/ES3/gl.h>
+#include <OpenGLES/ES3/glext.h>
+#endif
 #elif TARGET_OS_MAC
 #include <OpenGL/OpenGL.h>
 #include <OpenGL/gl3.h>
